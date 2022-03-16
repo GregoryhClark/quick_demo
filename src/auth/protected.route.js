@@ -15,30 +15,21 @@ export const ProtectedRoute = ({
       {...rest}
       render={props => {
         if (localStorage.getItem("token")) {
-          // alert(localStorage.getItem("token"))
-        //   if(localStorage.getItem('user')){
-            return <div className = {styles.main}>
-              {hideTopNav?null:<Topnav />}
-              <Component {...props} />
-              </div>;
-        //   }
-          // else{
-
-          // }
-          
+          return <div className={styles.main}>
+            {hideTopNav ? null : <Topnav />}
+            <Component {...props} />
+          </div>;
         }
-        //  else {
-          return (
-            <Redirect
-              to={{
-                pathname: "/",
-                state: {
-                  from: props.location
-                }
-              }}
-            />
-          );
-        // }
+        return (
+          <Redirect
+            to={{
+              pathname: "/",
+              state: {
+                from: props.location
+              }
+            }}
+          />
+        );
       }}
     />
   );
